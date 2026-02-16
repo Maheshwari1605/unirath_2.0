@@ -1,0 +1,14 @@
+# Render Blueprint: deploy as Static Site (not Web Service)
+# https://render.com/docs/static-sites
+
+services:
+  - type: web
+    name: unirath
+    runtime: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    # SPA: serve index.html for all routes (e.g. /about, /contact)
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
