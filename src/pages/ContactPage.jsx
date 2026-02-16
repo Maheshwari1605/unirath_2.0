@@ -38,10 +38,12 @@ const contactInfo = [
   },
 ]
 
-// In dev, Vite proxies /api/contact → Google Apps Script (avoids CORS). In production, set VITE_CONTACT_API_URL to your backend or use the script URL if CORS is fixed.
+// Dev: form posts to /api/contact, Vite proxy forwards to Apps Script. Production: post directly to script URL (set in Render env).
 const GOOGLE_APPS_SCRIPT_URL = import.meta.env.VITE_GOOGLE_APPS_SCRIPT_URL
 const CONTACT_SUBMIT_URL =
-  import.meta.env.VITE_CONTACT_API_URL || '/api/contact'
+  import.meta.env.VITE_CONTACT_API_URL ||
+  GOOGLE_APPS_SCRIPT_URL ||
+  '/api/contact'
 const URL_IS_PLACEHOLDER =
   typeof GOOGLE_APPS_SCRIPT_URL === 'string' &&
   GOOGLE_APPS_SCRIPT_URL.includes('YOUR_SCRIPT_ID')
