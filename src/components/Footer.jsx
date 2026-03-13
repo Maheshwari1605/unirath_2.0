@@ -9,12 +9,30 @@ const ourLinks = [
 ]
 
 const ourServices = [
-  'Revenue Cycle Management',
-  'Medical Record Retrieval',
-  'Customer Support',
-  'Back-Office Support',
-  'IT & Automation',
-  'Accounting Services',
+  {
+    label: 'Revenue Cycle Management',
+    to: '/services/revenue-cycle-management',
+  },
+  {
+    label: 'Medical Record Retrieval',
+    to: '/services/medical-record-retrieval',
+  },
+  {
+    label: 'Customer Support',
+    to: '/services/customer-support-services',
+  },
+  {
+    label: 'Back-Office Support',
+    to: '/services/back-office-administrative-support',
+  },
+  {
+    label: 'IT & Automation',
+    to: '/services/it-automation-services',
+  },
+  {
+    label: 'Accounting Services',
+    to: '/services/accounting-services',
+  },
 ]
 
 const otherLinks = [
@@ -65,9 +83,9 @@ export default function Footer() {
             <h3 className="footer-heading">Our Services</h3>
             <ul>
               {ourServices.map((service) => (
-                <li key={service}>
-                  <Link to="/#services" className="footer-link">
-                    {service}
+                <li key={service.label}>
+                  <Link to={service.to} className="footer-link">
+                    {service.label}
                   </Link>
                 </li>
               ))}
